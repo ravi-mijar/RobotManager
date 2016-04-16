@@ -32,11 +32,14 @@ public class Place implements IOperation {
 	@Override
 	public boolean execute(ToyRobot robot) throws InvalidOperationException {
 		
-		if(playfield.isOutOfBounds(newPosition))
+		if(playfield.isOutOfBounds(newPosition)) {
+			robot.setPlacedCorrectly(false);
 			return false;
+		}
 		else {
 			robot.setCurrentPosition(newPosition);
 			robot.setOrientation(newOrientation);
+			robot.setPlacedCorrectly(true);
 			return true;
 		}
 	}

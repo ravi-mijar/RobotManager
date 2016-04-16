@@ -11,6 +11,7 @@ public class ToyRobot {
 	
 	private Position currentPosition; 
 	private Orientation orientation;
+	private boolean placedCorrectly;
 	
 	private static ToyRobot instance;
 	
@@ -21,6 +22,14 @@ public class ToyRobot {
 			instance = new ToyRobot();
 		}
 		return instance;
+	}
+	
+	public void setPlacedCorrectly(boolean condition) {
+		this.placedCorrectly = condition;
+	}
+	
+	public boolean isPlacedCorrectly() {
+		return this.placedCorrectly;
 	}
 	
 	public Position getCurrentPosition() {
@@ -36,4 +45,10 @@ public class ToyRobot {
 		this.orientation = orientation;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder stb = new StringBuilder();
+		stb.append("robot: " + this.getCurrentPosition() + " : " + this.getOrientation());
+		return stb.toString();
+	}
 }

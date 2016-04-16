@@ -3,6 +3,9 @@
  */
 package com.rm.reagroup.operations;
 
+import java.util.Arrays;
+
+import com.rm.reagroup.playfield.Orientation;
 import com.rm.reagroup.robot.ToyRobot;
 
 /**
@@ -11,8 +14,12 @@ import com.rm.reagroup.robot.ToyRobot;
  */
 public class Rotate implements IOperation {
 
-	//Let's assume we the default direction as left.
-	private RotateDirection rotateDir = RotateDirection.LEFT;
+	//Let's assume the default direction as left.
+	private RotateDirection rotateDir;
+	
+	public Rotate(RotateDirection r) {
+		this.rotateDir = r;
+	}
 	
 	
 	/* (non-Javadoc)
@@ -20,11 +27,16 @@ public class Rotate implements IOperation {
 	 */
 	@Override
 	public boolean execute(ToyRobot robot) throws InvalidOperationException {
-		// TODO Auto-generated method stub
-		robot.getOrientation();
-		//robot.setOrientation(orientation);
-		
-		return false;
+		if(this.rotateDir == RotateDirection.LEFT) {
+			robot.setOrientation(robot.getOrientation().left());
+			return true;
+		}
+		else if(this.rotateDir == RotateDirection.RIGHT) {
+			robot.setOrientation(robot.getOrientation().right());
+			return true;
+		}
+		else
+			return false;
 	}
 
 }

@@ -8,7 +8,7 @@ package com.rm.reagroup.playfield;
  *
  */
 public interface IShape {
-	public boolean isOnBoundary(Position p);
+	//public boolean isOnBoundary(Position p);
 	
 	public boolean willFallOff(Position current, Orientation facing);
 	
