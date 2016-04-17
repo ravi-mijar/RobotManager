@@ -32,6 +32,9 @@ public class PlaceOperationTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		System.out.println("setting up.");
+		robot = ToyRobot.getRobotInstance();
+		playfield = new SquareTable(5);
 	}
 
 	/**
@@ -39,14 +42,17 @@ public class PlaceOperationTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		robot.setCurrentPosition(null);
+		robot = null;
+		System.out.println("tearing down");
 	}
 
 	@Test
 	public void testValidPlace() {
 		System.out.println("testValidPlace");
-		Place p = new Place(new Position(3,0), Orientation.WEST, playfield);
+		Place p = new Place(new Position(3,0, Orientation.WEST), playfield);
 		try {
-			p.execute(robot);
+			assertTrue(p.execute(robot));
 			System.out.println("After placement: " + robot);
 		}
 		catch(InvalidOperationException e) {
@@ -56,9 +62,9 @@ public class PlaceOperationTest {
 	@Test
 	public void testInvalidPlace() {
 		System.out.println("testInvalidPlace");
-		Place p = new Place(new Position(5, 5), Orientation.EAST, playfield);
+		Place p = new Place(new Position(5, 5, Orientation.EAST), playfield);
 		try {
-			p.execute(robot);
+			assertTrue(p.execute(robot));
 			System.out.println("After placement:" + robot);
 		}
 		catch(InvalidOperationException e) {

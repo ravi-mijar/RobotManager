@@ -1,0 +1,6 @@
+Apr 17, 2016 3:32:43 PM com.rm.reagroup.controller.RobotManager report
+INFO: Robot isn't placed correctly. Try the place command first.
+Apr 17, 2016 3:33:14 PM com.rm.reagroup.controller.RobotManager move
+WARNING: Robot isn't placed correctly. Try the place command first.
+Apr 17, 2016 3:33:25 PM com.rm.reagroup.controller.RobotManager report
+INFO: robot: X: 2, Y: 3, SOUTH

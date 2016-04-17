@@ -1,6 +1,5 @@
 package com.rm.reagroup.robot;
 
-import com.rm.reagroup.playfield.Orientation;
 import com.rm.reagroup.playfield.Position;
 
 /**
@@ -10,8 +9,6 @@ import com.rm.reagroup.playfield.Position;
 public class ToyRobot {
 	
 	private Position currentPosition; 
-	private Orientation orientation;
-	private boolean placedCorrectly;
 	
 	private static ToyRobot instance;
 	
@@ -24,12 +21,8 @@ public class ToyRobot {
 		return instance;
 	}
 	
-	public void setPlacedCorrectly(boolean condition) {
-		this.placedCorrectly = condition;
-	}
-	
 	public boolean isPlacedCorrectly() {
-		return this.placedCorrectly;
+		return this.currentPosition != null? true : false;
 	}
 	
 	public Position getCurrentPosition() {
@@ -38,17 +31,11 @@ public class ToyRobot {
 	public void setCurrentPosition(Position currentPosition) {
 		this.currentPosition = currentPosition;
 	}
-	public Orientation getOrientation() {
-		return orientation;
-	}
-	public void setOrientation(Orientation orientation) {
-		this.orientation = orientation;
-	}
 	
 	@Override
 	public String toString() {
 		StringBuilder stb = new StringBuilder();
-		stb.append("robot: " + this.getCurrentPosition() + " : " + this.getOrientation());
+		stb.append("robot: " + this.getCurrentPosition());
 		return stb.toString();
 	}
 }

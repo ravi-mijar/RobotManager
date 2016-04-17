@@ -1,27 +1,26 @@
-/**
- * 
- */
 package com.rm.reagroup.operations;
 
 import com.rm.reagroup.playfield.IShape;
-import com.rm.reagroup.playfield.Orientation;
 import com.rm.reagroup.playfield.Position;
 import com.rm.reagroup.robot.ToyRobot;
 
 /**
+ * This class provides implementation of the place operation, which will place the robot on the playfield
+ * at the given position and orientation.
  * @author hawk
  *
  */
 public class Place implements IOperation {
 
+	//new Position where the robot needs to be placed.
 	private Position newPosition;
-	private Orientation newOrientation;
+	
+	//The playfield where the robot needs to be placed.
 	private IShape playfield;
 	
 
-	public Place(Position position, Orientation facing, IShape playfield2) {
+	public Place(Position position, IShape playfield2) {
 		this.newPosition = position;
-		this.newOrientation = facing;
 		this.playfield = playfield2;
 	}
 
@@ -31,15 +30,12 @@ public class Place implements IOperation {
 	 */
 	@Override
 	public boolean execute(ToyRobot robot) throws InvalidOperationException {
-		
+		//Check whether the new position is within the playfield / shape.
 		if(playfield.isOutOfBounds(newPosition)) {
-			robot.setPlacedCorrectly(false);
 			return false;
 		}
 		else {
 			robot.setCurrentPosition(newPosition);
-			robot.setOrientation(newOrientation);
-			robot.setPlacedCorrectly(true);
 			return true;
 		}
 	}

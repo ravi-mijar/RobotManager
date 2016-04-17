@@ -3,18 +3,22 @@
  */
 package com.rm.reagroup.operations;
 
+import com.rm.reagroup.controller.RobotManager;
 import com.rm.reagroup.playfield.IShape;
 import com.rm.reagroup.playfield.Orientation;
 import com.rm.reagroup.playfield.Position;
 import com.rm.reagroup.robot.ToyRobot;
+import com.rm.reagroup.utils.Constants;
 
 /**
+ * This class implements the move operation. 
+ * It uses the Shape object passed, and moves the robot accordingly.
  * @author hawk
  *
  */
 public class Move implements IOperation {
 	
-	private static final int MOVEBY = 1;//Can be filled by a system property as well.
+	//The shape on which this robot is supposed to be moved.
 	private IShape playfield;
 	
 	public Move(IShape playfield) {
@@ -27,19 +31,19 @@ public class Move implements IOperation {
 	@Override
 	public boolean execute(ToyRobot robot) throws InvalidOperationException {
 		Position current = robot.getCurrentPosition();
-		if(playfield.willFallOff(current, robot.getOrientation())) {
-			System.out.println("The robot will fall off the playfield with this move. Ignoring command.");
+		if(playfield.willFallOff(current)) {
+			RobotManager.getLogger().warning(Constants.ROBOT_WILL_FALL);
 			return false;
 		}
 		else {
-			if(robot.getOrientation() == Orientation.NORTH)
-				robot.setCurrentPosition(new Position(current.getX(), current.getY() + MOVEBY));
-			else if(robot.getOrientation() == Orientation.SOUTH)
-				robot.setCurrentPosition(new Position(current.getX(), current.getY() - MOVEBY));
-			else if(robot.getOrientation() == Orientation.EAST)
-				robot.setCurrentPosition(new Position(current.getX() + MOVEBY, current.getY()));
-			else if(robot.getOrientation() == Orientation.WEST)
-				robot.setCurrentPosition(new Position(current.getX() - MOVEBY, current.getY()));
+			if(current.getOrientation() == Orientation.NORTH)
+				current.setY(current.getY() + Constants.MOVEBY);
+			else if(current.getOrientation() == Orientation.SOUTH)
+				current.setY(current.getY() - Constants.MOVEBY);
+			else if(current.getOrientation() == Orientation.EAST)
+				current.setX(current.getX() + Constants.MOVEBY);
+			else if(current.getOrientation() == Orientation.WEST)
+				current.setX(current.getX() - Constants.MOVEBY);
 			return true;
 		}
 	}

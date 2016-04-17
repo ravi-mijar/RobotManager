@@ -3,18 +3,18 @@
  */
 package com.rm.reagroup.operations;
 
-import java.util.Arrays;
-
-import com.rm.reagroup.playfield.Orientation;
+import com.rm.reagroup.playfield.Position;
 import com.rm.reagroup.robot.ToyRobot;
 
 /**
+ * This class provides implementation of the rotate operation, in which a robot is rotated 
+ * to the left or right by 90 degrees in its current position.
  * @author hawk
  *
  */
 public class Rotate implements IOperation {
 
-	//Let's assume the default direction as left.
+	//Direction to rotate to
 	private RotateDirection rotateDir;
 	
 	public Rotate(RotateDirection r) {
@@ -27,12 +27,13 @@ public class Rotate implements IOperation {
 	 */
 	@Override
 	public boolean execute(ToyRobot robot) throws InvalidOperationException {
+		Position current = robot.getCurrentPosition();
 		if(this.rotateDir == RotateDirection.LEFT) {
-			robot.setOrientation(robot.getOrientation().left());
+			current.setOrientation(current.getOrientation().left());
 			return true;
 		}
 		else if(this.rotateDir == RotateDirection.RIGHT) {
-			robot.setOrientation(robot.getOrientation().right());
+			current.setOrientation(current.getOrientation().right());
 			return true;
 		}
 		else

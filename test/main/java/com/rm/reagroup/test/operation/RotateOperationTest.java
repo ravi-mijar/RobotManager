@@ -34,6 +34,9 @@ public class RotateOperationTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		System.out.println("setting up.");
+		robot = ToyRobot.getRobotInstance();
+		playfield = new SquareTable(5);
 	}
 
 	/**
@@ -41,13 +44,16 @@ public class RotateOperationTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		robot.setCurrentPosition(null);
+		robot = null;
+		System.out.println("tearing down");
 	}
 
 	@Test
 	public void testRotateLeft() {
 		System.out.println("testRotateLeft");
 		//place it within the table
-		Place p = new Place(new Position(3, 3), Orientation.EAST, playfield);
+		Place p = new Place(new Position(3, 3, Orientation.EAST), playfield);
 
 		try {
 			p.execute(robot);
@@ -71,7 +77,7 @@ public class RotateOperationTest {
 	public void testRotateRight() {
 		System.out.println("testRotateRight");
 		//place it within the table
-		Place p = new Place(new Position(3, 3), Orientation.EAST, playfield);
+		Place p = new Place(new Position(3, 3, Orientation.EAST), playfield);
 
 		try {
 			p.execute(robot);
@@ -88,6 +94,33 @@ public class RotateOperationTest {
 			rRight.execute(robot);
 			System.out.println(robot);
 			
+		}
+		catch(InvalidOperationException e) {
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testMixitUp() {
+		System.out.println("testMixitUp");
+		//place it within the table
+		Place p = new Place(new Position(3, 3, Orientation.EAST), playfield);
+
+		try {
+			p.execute(robot);
+			System.out.println("Original situation: " + robot + " + right");
+			Rotate rRight = new Rotate(RotateDirection.RIGHT);
+			Rotate rLeft = new Rotate(RotateDirection.LEFT);
+			rRight.execute(robot);
+			System.out.println(robot + " + left");
+			rLeft.execute(robot);
+			System.out.println(robot + " + right");
+			rRight.execute(robot);
+			System.out.println(robot + " + right");
+			rRight.execute(robot);
+			System.out.println(robot + " + left");
+			rLeft.execute(robot);
+			System.out.println(robot);
 		}
 		catch(InvalidOperationException e) {
 			fail(e.getMessage());

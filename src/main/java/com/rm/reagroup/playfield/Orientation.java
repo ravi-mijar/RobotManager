@@ -1,15 +1,18 @@
-/**
- * 
- */
 package com.rm.reagroup.playfield;
 
 /**
+ * This enum defines the possible directions / orientation the robot can have.
+ * It also defines methods on the enum to change the direction clockwise / anti-clockwise. 
  * @author hawk
  *
  */
 public enum Orientation {
 	SOUTH, WEST, NORTH, EAST;
 	
+	/**
+	 * Method to turn the robot to the left.
+	 * @return - new direction.
+	 */
 	public Orientation left() {
 		//get all the values in this enum.
 		Orientation[] values = Orientation.values();
@@ -24,6 +27,10 @@ public enum Orientation {
 			return values[index - 1];
 	}
 	
+	/**
+	 * Method to turn the robot to the right.
+	 * @return - new direction.
+	 */
 	public Orientation right() {
 		//get all the values in this enum.
 		Orientation[] values = Orientation.values();
@@ -31,7 +38,7 @@ public enum Orientation {
 		//find the index of this particular instance
 		int index = this.ordinal();
 
-		//if this index is the 1st position, we want to go to the end of the array
+		//if this index is the last position, we want to go to the beginning of the array
 		if(index == (values.length-1))
 			return values[0];
 		else 
