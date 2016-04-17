@@ -1,13 +1,3 @@
-- tests
-- design decisions
-- documentation
-- how I reached to a conclusion
-- git branches, logical commits etc
-
-
-5x5 matrix.
-place directly, facing some direction.
-
 README.md
 -------------------------------
 How to run the app:
