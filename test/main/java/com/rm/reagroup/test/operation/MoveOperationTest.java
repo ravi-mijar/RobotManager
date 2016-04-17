@@ -3,13 +3,12 @@
  */
 package com.rm.reagroup.test.operation;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.rm.reagroup.operations.InvalidOperationException;
 import com.rm.reagroup.operations.Move;
 import com.rm.reagroup.operations.Place;
 import com.rm.reagroup.playfield.IShape;
@@ -52,18 +51,13 @@ public class MoveOperationTest {
 		System.out.println("testValidMove");
 		//place it within the table
 		Place p = new Place(new Position(0, 0, Orientation.EAST), playfield);
-		
-		try {
-			p.execute(robot);
-			System.out.println("Original situation: " + robot);
-			Move m = new Move(playfield);
-			for (int i= 0; i<15;i++)
-				m.execute(robot);
-			System.out.println(robot);
-		}
-		catch(InvalidOperationException e) {
-			fail(e.getMessage());
-		}
+
+		p.execute(robot);
+		System.out.println("Original situation: " + robot);
+		Move m = new Move(playfield);
+		for (int i= 0; i<15;i++)
+			m.execute(robot);
+		System.out.println(robot);
 	}
 	
 	@Test
@@ -71,17 +65,12 @@ public class MoveOperationTest {
 		System.out.println("testInvalidMoveToNorth");
 		//place it within the table
 		Place p = new Place(new Position(4, 14, Orientation.NORTH), playfield);
-		
-		try {
-			p.execute(robot);
-			System.out.println("Original situation: " + robot);
-			Move m = new Move(playfield);
-			assertTrue(m.execute(robot));
-			System.out.println("After Move: " + robot);
-		}
-		catch(InvalidOperationException e) {
-			fail(e.getMessage());
-		}
+
+		p.execute(robot);
+		System.out.println("Original situation: " + robot);
+		Move m = new Move(playfield);
+		assertTrue(m.execute(robot));
+		System.out.println("After Move: " + robot);
 	}
 	
 	@Test
@@ -89,17 +78,12 @@ public class MoveOperationTest {
 		System.out.println("testInvalidMoveToEast");
 		//place it within the table
 		Place p = new Place(new Position(14, 7, Orientation.EAST), playfield);
-		
-		try {
-			p.execute(robot);
-			System.out.println("Original situation: " + robot);
-			Move m = new Move(playfield);
-			assertTrue(m.execute(robot));
-			System.out.println("After Move: " + robot);
-		}
-		catch(InvalidOperationException e) {
-			fail(e.getMessage());
-		}
+
+		p.execute(robot);
+		System.out.println("Original situation: " + robot);
+		Move m = new Move(playfield);
+		assertTrue(m.execute(robot));
+		System.out.println("After Move: " + robot);
 	}
 	
 	@Test
@@ -107,17 +91,12 @@ public class MoveOperationTest {
 		System.out.println("testInvalidMoveToWest");
 		//place it within the table
 		Place p = new Place(new Position(0, 4, Orientation.WEST), playfield);
-		
-		try {
-			p.execute(robot);
-			System.out.println("Original situation: " + robot);
-			Move m = new Move(playfield);
-			assertTrue(m.execute(robot));
-			System.out.println("After Move: " + robot);
-		}
-		catch(InvalidOperationException e) {
-			fail(e.getMessage());
-		}
+
+		p.execute(robot);
+		System.out.println("Original situation: " + robot);
+		Move m = new Move(playfield);
+		assertTrue(m.execute(robot));
+		System.out.println("After Move: " + robot);
 	}
 	
 	@Test
@@ -125,17 +104,12 @@ public class MoveOperationTest {
 		System.out.println("testInvalidMoveToSouth");
 		//place it within the table
 		Place p = new Place(new Position(4, 0, Orientation.SOUTH), playfield);
-		
-		try {
-			p.execute(robot);
-			System.out.println("Original situation: " + robot);
-			Move m = new Move(playfield);
-			assertTrue(m.execute(robot));
-			System.out.println("After Move: " + robot);
-			//assert(true);
-		}
-		catch(InvalidOperationException e) {
-			fail(e.getMessage());
-		}
+
+		p.execute(robot);
+		System.out.println("Original situation: " + robot);
+		Move m = new Move(playfield);
+		assertTrue(m.execute(robot));
+		System.out.println("After Move: " + robot);
+		//assert(true);
 	}
 }

@@ -1,8 +1,10 @@
 package com.rm.reagroup.operations;
 
+import com.rm.reagroup.controller.RobotManager;
 import com.rm.reagroup.playfield.IShape;
 import com.rm.reagroup.playfield.Position;
 import com.rm.reagroup.robot.ToyRobot;
+import com.rm.reagroup.utils.Constants;
 
 /**
  * This class provides implementation of the place operation, which will place the robot on the playfield
@@ -29,9 +31,10 @@ public class Place implements IOperation {
 	 * @see com.rm.reagroup.operations.IOperation#execute(com.rm.reagroup.robot.ToyRobot)
 	 */
 	@Override
-	public boolean execute(ToyRobot robot) throws InvalidOperationException {
+	public boolean execute(ToyRobot robot) {
 		//Check whether the new position is within the playfield / shape.
 		if(playfield.isOutOfBounds(newPosition)) {
+			RobotManager.getLogger().warning(Constants.POSITION_OUT_OF_BOUNDS);
 			return false;
 		}
 		else {

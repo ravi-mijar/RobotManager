@@ -3,14 +3,11 @@
  */
 package com.rm.reagroup.test.operation;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.rm.reagroup.operations.IOperation;
-import com.rm.reagroup.operations.InvalidOperationException;
 import com.rm.reagroup.operations.Place;
 import com.rm.reagroup.operations.Rotate;
 import com.rm.reagroup.operations.RotateDirection;
@@ -55,23 +52,18 @@ public class RotateOperationTest {
 		//place it within the table
 		Place p = new Place(new Position(3, 3, Orientation.EAST), playfield);
 
-		try {
-			p.execute(robot);
-			IOperation rLeft = new Rotate(RotateDirection.LEFT);
-			rLeft.execute(robot);
-			System.out.println(robot);
-			rLeft.execute(robot);
-			System.out.println(robot);
-			rLeft.execute(robot);
-			System.out.println(robot);
-			rLeft.execute(robot);
-			System.out.println(robot);
-			rLeft.execute(robot);
-			System.out.println(robot);
-		}
-		catch(InvalidOperationException e) {
-			fail(e.getMessage());
-		}
+		p.execute(robot);
+		IOperation rLeft = new Rotate(RotateDirection.LEFT);
+		rLeft.execute(robot);
+		System.out.println(robot);
+		rLeft.execute(robot);
+		System.out.println(robot);
+		rLeft.execute(robot);
+		System.out.println(robot);
+		rLeft.execute(robot);
+		System.out.println(robot);
+		rLeft.execute(robot);
+		System.out.println(robot);
 	}
 	@Test
 	public void testRotateRight() {
@@ -79,25 +71,19 @@ public class RotateOperationTest {
 		//place it within the table
 		Place p = new Place(new Position(3, 3, Orientation.EAST), playfield);
 
-		try {
-			p.execute(robot);
-			System.out.println("Original situation: " + robot);
-			Rotate rRight = new Rotate(RotateDirection.RIGHT);
-			rRight.execute(robot);
-			System.out.println(robot);
-			rRight.execute(robot);
-			System.out.println(robot);
-			rRight.execute(robot);
-			System.out.println(robot);
-			rRight.execute(robot);
-			System.out.println(robot);
-			rRight.execute(robot);
-			System.out.println(robot);
-			
-		}
-		catch(InvalidOperationException e) {
-			fail(e.getMessage());
-		}
+		p.execute(robot);
+		System.out.println("Original situation: " + robot);
+		Rotate rRight = new Rotate(RotateDirection.RIGHT);
+		rRight.execute(robot);
+		System.out.println(robot);
+		rRight.execute(robot);
+		System.out.println(robot);
+		rRight.execute(robot);
+		System.out.println(robot);
+		rRight.execute(robot);
+		System.out.println(robot);
+		rRight.execute(robot);
+		System.out.println(robot);
 	}
 	
 	@Test
@@ -106,24 +92,19 @@ public class RotateOperationTest {
 		//place it within the table
 		Place p = new Place(new Position(3, 3, Orientation.EAST), playfield);
 
-		try {
-			p.execute(robot);
-			System.out.println("Original situation: " + robot + " + right");
-			Rotate rRight = new Rotate(RotateDirection.RIGHT);
-			Rotate rLeft = new Rotate(RotateDirection.LEFT);
-			rRight.execute(robot);
-			System.out.println(robot + " + left");
-			rLeft.execute(robot);
-			System.out.println(robot + " + right");
-			rRight.execute(robot);
-			System.out.println(robot + " + right");
-			rRight.execute(robot);
-			System.out.println(robot + " + left");
-			rLeft.execute(robot);
-			System.out.println(robot);
-		}
-		catch(InvalidOperationException e) {
-			fail(e.getMessage());
-		}
+		p.execute(robot);
+		System.out.println("Original situation: " + robot + " + right");
+		Rotate rRight = new Rotate(RotateDirection.RIGHT);
+		Rotate rLeft = new Rotate(RotateDirection.LEFT);
+		rRight.execute(robot);
+		System.out.println(robot + " + left");
+		rLeft.execute(robot);
+		System.out.println(robot + " + right");
+		rRight.execute(robot);
+		System.out.println(robot + " + right");
+		rRight.execute(robot);
+		System.out.println(robot + " + left");
+		rLeft.execute(robot);
+		System.out.println(robot);
 	}
 }

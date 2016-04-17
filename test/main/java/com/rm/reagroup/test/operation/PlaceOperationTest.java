@@ -3,13 +3,13 @@
  */
 package com.rm.reagroup.test.operation;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.rm.reagroup.operations.InvalidOperationException;
 import com.rm.reagroup.operations.Place;
 import com.rm.reagroup.playfield.IShape;
 import com.rm.reagroup.playfield.Orientation;
@@ -51,24 +51,14 @@ public class PlaceOperationTest {
 	public void testValidPlace() {
 		System.out.println("testValidPlace");
 		Place p = new Place(new Position(3,0, Orientation.WEST), playfield);
-		try {
-			assertTrue(p.execute(robot));
-			System.out.println("After placement: " + robot);
-		}
-		catch(InvalidOperationException e) {
-			fail(e.getMessage());
-		}
+		assertTrue(p.execute(robot));
+		System.out.println("After placement: " + robot);
 	}
 	@Test
 	public void testInvalidPlace() {
 		System.out.println("testInvalidPlace");
 		Place p = new Place(new Position(5, 5, Orientation.EAST), playfield);
-		try {
-			assertTrue(p.execute(robot));
-			System.out.println("After placement:" + robot);
-		}
-		catch(InvalidOperationException e) {
-			fail(e.getMessage());
-		}
+		assertTrue(p.execute(robot));
+		System.out.println("After placement:" + robot);
 	}
 }

@@ -29,13 +29,15 @@ public class Move implements IOperation {
 	 * @see com.rm.reagroup.operations.IOperation#execute()
 	 */
 	@Override
-	public boolean execute(ToyRobot robot) throws InvalidOperationException {
+	public boolean execute(ToyRobot robot) {
 		Position current = robot.getCurrentPosition();
+		//first check whether the robot will fall off if this move is executed.
 		if(playfield.willFallOff(current)) {
 			RobotManager.getLogger().warning(Constants.ROBOT_WILL_FALL);
 			return false;
 		}
 		else {
+			//things look OK, let's move the robot.
 			if(current.getOrientation() == Orientation.NORTH)
 				current.setY(current.getY() + Constants.MOVEBY);
 			else if(current.getOrientation() == Orientation.SOUTH)

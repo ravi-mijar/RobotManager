@@ -26,7 +26,7 @@ public class Rotate implements IOperation {
 	 * @see com.rm.reagroup.operations.IOperation#execute(com.rm.reagroup.robot.ToyRobot)
 	 */
 	@Override
-	public boolean execute(ToyRobot robot) throws InvalidOperationException {
+	public boolean execute(ToyRobot robot) {
 		Position current = robot.getCurrentPosition();
 		if(this.rotateDir == RotateDirection.LEFT) {
 			current.setOrientation(current.getOrientation().left());
