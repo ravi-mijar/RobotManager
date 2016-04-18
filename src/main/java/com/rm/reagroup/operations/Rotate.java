@@ -27,15 +27,19 @@ public class Rotate implements IOperation {
 	 */
 	@Override
 	public boolean execute(ToyRobot robot) {
+		//Get the current position of the robot.
 		Position current = robot.getCurrentPosition();
 		if(this.rotateDir == RotateDirection.LEFT) {
+			//if the new rotate direction was left, call appropriate method on the orientation enum
 			current.setOrientation(current.getOrientation().left());
 			return true;
 		}
 		else if(this.rotateDir == RotateDirection.RIGHT) {
+			//if the new rotate direction was right, call appropriate method on the orientation enum
 			current.setOrientation(current.getOrientation().right());
 			return true;
 		}
+		// looks like invalid input
 		else
 			return false;
 	}

@@ -21,6 +21,8 @@ public class Move implements IOperation {
 	//The shape on which this robot is supposed to be moved.
 	private IShape playfield;
 	
+	public static final int MOVEBY = 1;//Can be filled by a system property as well.
+	
 	public Move(IShape playfield) {
 		this.playfield = playfield;
 	}
@@ -39,13 +41,13 @@ public class Move implements IOperation {
 		else {
 			//things look OK, let's move the robot.
 			if(current.getOrientation() == Orientation.NORTH)
-				current.setY(current.getY() + Constants.MOVEBY);
+				current.setY(current.getY() + Move.MOVEBY);
 			else if(current.getOrientation() == Orientation.SOUTH)
-				current.setY(current.getY() - Constants.MOVEBY);
+				current.setY(current.getY() - Move.MOVEBY);
 			else if(current.getOrientation() == Orientation.EAST)
-				current.setX(current.getX() + Constants.MOVEBY);
+				current.setX(current.getX() + Move.MOVEBY);
 			else if(current.getOrientation() == Orientation.WEST)
-				current.setX(current.getX() - Constants.MOVEBY);
+				current.setX(current.getX() - Move.MOVEBY);
 			return true;
 		}
 	}

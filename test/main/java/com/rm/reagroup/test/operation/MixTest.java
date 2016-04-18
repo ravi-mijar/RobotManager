@@ -20,6 +20,8 @@ import com.rm.reagroup.playfield.SquareTable;
 import com.rm.reagroup.robot.ToyRobot;
 
 /**
+ * This test will fire operations on the robot in a seemingly 
+ * random order. 
  * @author hawk
  *
  */

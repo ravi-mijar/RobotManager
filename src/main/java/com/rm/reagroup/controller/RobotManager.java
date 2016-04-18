@@ -26,10 +26,16 @@ import asg.cliche.Param;
 import asg.cliche.Shell;
 import asg.cliche.ShellFactory;
 
+/**
+ * This is the main class of the Application. 
+ * It contains methods for the CLI which in turn pass on instructions to the robot.
+ * @author hawk
+ *
+ */
 public class RobotManager {
 	
 	//For this JVM instance we want to ensure the playfield doesn't change.
-	private static final IShape playfield = new SquareTable(Constants.SQUARE_TABLE_SIZE);
+	private static final IShape playfield = new SquareTable(SquareTable.SQUARE_TABLE_SIZE);
 	private static ToyRobot robot = null;
 	
 	private static final Logger LOG = Logger.getLogger("RobotManager");
@@ -63,13 +69,13 @@ public class RobotManager {
 		
 		LOG.entering(this.getClass().getName(), "place");
 		Orientation orientation;
-		if(Constants.NORTH.equalsIgnoreCase(facing)) 
+		if(Orientation.NORTH.name().equalsIgnoreCase(facing)) 
 			orientation = Orientation.NORTH;
-		else if(Constants.SOUTH.equalsIgnoreCase(facing))
+		else if(Orientation.SOUTH.name().equalsIgnoreCase(facing))
 			orientation = Orientation.SOUTH;
-		else if(Constants.WEST.equalsIgnoreCase(facing))
+		else if(Orientation.WEST.name().equalsIgnoreCase(facing))
 			orientation = Orientation.WEST;
-		else if(Constants.EAST.equalsIgnoreCase(facing))
+		else if(Orientation.EAST.name().equalsIgnoreCase(facing))
 			orientation = Orientation.EAST;
 		else {
 			LOG.warning(Constants.INVALID_DIRECTION);

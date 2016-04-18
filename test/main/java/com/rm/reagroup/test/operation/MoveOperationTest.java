@@ -18,6 +18,7 @@ import com.rm.reagroup.playfield.SquareTable;
 import com.rm.reagroup.robot.ToyRobot;
 
 /**
+ * This test will test conditions related to movement of the robot.
  * @author hawk
  *
  */

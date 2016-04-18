@@ -3,6 +3,7 @@ package com.rm.reagroup.robot;
 import com.rm.reagroup.playfield.Position;
 
 /**
+ * This class defines the robot itself.
  * @author hawk
  *
  */
@@ -16,6 +17,10 @@ public class ToyRobot {
 	
 	private ToyRobot() {}
 	
+	/**
+	 * Method to fetch the single robot instance in this JVM.
+	 * @return ToyRobot object
+	 */
 	public static ToyRobot getRobotInstance() {
 		if(instance == null) {
 			instance = new ToyRobot();
@@ -28,15 +33,24 @@ public class ToyRobot {
 	 * this function returns true, else it returns false.
 	 * Position object is set only when it was within the 
 	 * bounds of the current playfield / IShape object.
-	 * @return 
+	 * @return true if robot is within the playfield, false otherwise
 	 */
 	public boolean isPlacedCorrectly() {
 		return this.currentPosition != null? true : false;
 	}
 	
+	/**
+	 * Return the current position of the robot.
+	 * @return current Position
+	 */
 	public Position getCurrentPosition() {
 		return currentPosition;
 	}
+	
+	/**
+	 * Set the position of the robot to 'currentPosition'
+	 * @param currentPosition
+	 */
 	public void setCurrentPosition(Position currentPosition) {
 		this.currentPosition = currentPosition;
 	}

@@ -7,6 +7,9 @@ package com.rm.reagroup.playfield;
  */
 public class SquareTable implements IShape {
 	
+	//Keep a constant size defined for now.
+	public static final int SQUARE_TABLE_SIZE = 5;
+	
 	//length of the side.
 	private int length;
 	

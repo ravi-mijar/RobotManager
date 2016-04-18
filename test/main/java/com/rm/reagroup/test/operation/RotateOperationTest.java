@@ -18,6 +18,7 @@ import com.rm.reagroup.playfield.SquareTable;
 import com.rm.reagroup.robot.ToyRobot;
 
 /**
+ * This class will test the rotation operations on the robot.
  * @author hawk
  *
  */

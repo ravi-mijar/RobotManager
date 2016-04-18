@@ -4,7 +4,6 @@
 package com.rm.reagroup.test.operation;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
@@ -57,7 +56,7 @@ public class PlaceOperationTest {
 	@Test
 	public void testInvalidPlace() {
 		System.out.println("testInvalidPlace");
-		Place p = new Place(new Position(5, 5, Orientation.EAST), playfield);
+		Place p = new Place(new Position(-5, 5, Orientation.EAST), playfield);
 		assertTrue(p.execute(robot));
 		System.out.println("After placement:" + robot);
 	}

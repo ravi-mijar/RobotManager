@@ -14,8 +14,8 @@ public interface IShape {
 	/**
 	 * Determine whether the robot will fall off in the next move, depending on the current position 
 	 * and orientation.
-	 * @param current
-	 * @return
+	 * @param current position
+	 * @return true if robot will fall off, false otherwise
 	 */
 	public boolean willFallOff(Position current);
 	
@@ -23,8 +23,8 @@ public interface IShape {
 	/**
 	 * Determine whether the position object passed in lies within the boundaries of the shape
 	 * or no.
-	 * @param p
-	 * @return
+	 * @param p - Any position object to determine whether it lies within this shape
+	 * @return - true if the position is outside, false otherwise.
 	 */
 	public boolean isOutOfBounds(Position p);
 }
