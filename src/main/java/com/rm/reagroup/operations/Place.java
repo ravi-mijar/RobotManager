@@ -21,6 +21,11 @@ public class Place implements IOperation {
 	private IShape playfield;
 	
 
+	/**
+	 * Instantiates the Place operation.
+	 * @param position - Position where robot needs to be placed.
+	 * @param playfield2 - Shape on which robot needs to be placed.
+	 */
 	public Place(Position position, IShape playfield2) {
 		this.newPosition = position;
 		this.playfield = playfield2;

@@ -9,5 +9,12 @@ import com.rm.reagroup.robot.ToyRobot;
  *
  */
 public interface IOperation {
+	/**
+	 * Implement this method to define your operation on the robot.
+	 * The implementation should change the state of the robot only for a 
+	 * valid operation. 
+	 * @param robot - the robot to operate on
+	 * @return - true if the operation succeeded, false otherwise.
+	 */
 	public boolean execute(ToyRobot robot);
 }

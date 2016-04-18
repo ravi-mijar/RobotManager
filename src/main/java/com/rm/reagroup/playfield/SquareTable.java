@@ -13,7 +13,10 @@ public class SquareTable implements IShape {
 	//length of the side.
 	private int length;
 	
-	//initialize
+	/**
+	 * Initialize the square table.
+	 * @param length - length of each side.
+	 */
 	public SquareTable(int length) {
 		this.length = length;
 	}

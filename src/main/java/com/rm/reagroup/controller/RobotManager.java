@@ -41,6 +41,9 @@ public class RobotManager {
 	private static final Logger LOG = Logger.getLogger("RobotManager");
 	private static Handler fileHandler = null;
 	
+	/**
+	 * Initializes the application. Sets the logger, log handlers etc.
+	 */
 	public RobotManager() {
 		try {
 			//Get the basics in place.
@@ -61,6 +64,13 @@ public class RobotManager {
 		}
 	}
 	
+	/**
+	 * Command to place the robot.
+	 * @param x - X coordinate of the robot's new position.
+	 * @param y - Y coordinate of the robot's new position.
+	 * @param facing - New orientation of the robot. 
+	 * @return - String depicting the position of the robot if placement was successful. Error message otherwise.
+	 */
 	@Command(description = "This command places the robot on the playfield in a particular position and orientation."
 			+ " Placements outside the playfield are ignored.", abbrev="pl")
 	public String place(@Param(description = "X coordinate of robot's position. (0-4)", name="x")int x,
@@ -86,6 +96,10 @@ public class RobotManager {
 		return report();
 	}
 	
+	/**
+	 * Command to move the robot in the currently facing direction by one unit.
+	 * @return - String depicting the position of the robot if move was successful. Error message otherwise.
+	 */
 	@Command(description="This command moves the robot 1 unit in the direction it is facing. Movements"
 			+ " resulting in the robot falling off the playfield are ignored.", abbrev="mv")
 	public String move() {
@@ -101,6 +115,10 @@ public class RobotManager {
 		}
 	}
 	
+	/**
+	 * Command to rotate the robot left by 90 degrees.
+	 * @return - String depicting the position of the robot if rotation was successful. Error message otherwise.
+	 */
 	@Command(description="Rotate the robot in its place by 90 degrees to the left.", abbrev="l")
 	public String left() {
 		LOG.entering(this.getClass().getName(), "left", report());
@@ -115,6 +133,10 @@ public class RobotManager {
 		}
 	}
 	
+	/**
+	 * Command to rotate the robot right by 90 degrees.
+	 * @return - String depicting the position of the robot if rotation was successful. Error message otherwise.
+	 */
 	@Command(description="Rotate the robot in its place by 90 degrees to the right.", abbrev="r")
 	public String right() {
 		LOG.entering(this.getClass().getName(), "right", report());
@@ -129,6 +151,10 @@ public class RobotManager {
 		}
 	}
 	
+	/**
+	 * Command to report current position of robot. 
+	 * @return - String depicting the position of the robot. Error message if robot isn't placed yet.
+	 */
 	@Command(description="Returns the current position of the robot.", abbrev="re")
 	public String report() {
 		
@@ -142,6 +168,10 @@ public class RobotManager {
 		}
 	}
 	
+	/**
+	 * Get the logger for the application.
+	 * @return - Logger instance.
+	 */
 	public static Logger getLogger() {
 		return LOG;
 	}

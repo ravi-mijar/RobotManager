@@ -17,6 +17,11 @@ public class Rotate implements IOperation {
 	//Direction to rotate to
 	private RotateDirection rotateDir;
 	
+	/**
+	 * Instantiates the Rotate operation with the direction in which 
+	 * we want to rotate the robot.
+	 * @param r - Direction in which rotation is expected.
+	 */
 	public Rotate(RotateDirection r) {
 		this.rotateDir = r;
 	}

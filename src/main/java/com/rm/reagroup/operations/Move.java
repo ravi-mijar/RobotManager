@@ -21,8 +21,13 @@ public class Move implements IOperation {
 	//The shape on which this robot is supposed to be moved.
 	private IShape playfield;
 	
+	//Unit of movement.
 	public static final int MOVEBY = 1;//Can be filled by a system property as well.
 	
+	/**
+	 * Instantiates the Move operation.
+	 * @param playfield - Shape on which we want to move the robot.
+	 */
 	public Move(IShape playfield) {
 		this.playfield = playfield;
 	}

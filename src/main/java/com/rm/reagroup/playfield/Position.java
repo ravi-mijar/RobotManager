@@ -12,6 +12,12 @@ public class Position {
 	private int y;
 	private Orientation orientation;
 	
+	/**
+	 * Initialize position of the robot.
+	 * @param x - X coordinate
+	 * @param y - Y coordinate
+	 * @param orientation - Orientation / direction of the robot.
+	 */
 	public Position(int x, int y, Orientation orientation) {
 		super();
 		this.x = x;
