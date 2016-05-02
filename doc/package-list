@@ -1,6 +1,3 @@
-com.rm.reagroup.controller
-com.rm.reagroup.operations
 com.rm.reagroup.playfield
 com.rm.reagroup.robot
-com.rm.reagroup.test.operation
 com.rm.reagroup.utils

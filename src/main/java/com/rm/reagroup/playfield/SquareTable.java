@@ -1,5 +1,8 @@
 package com.rm.reagroup.playfield;
 
+import com.rm.reagroup.robot.Orientation;
+import com.rm.reagroup.robot.Position;
+
 /**
  * This class implements a square shaped table with an integer length.
  * @author hawk
@@ -8,7 +11,7 @@ package com.rm.reagroup.playfield;
 public class SquareTable implements IShape {
 	
 	//Keep a constant size defined for now.
-	public static final int SQUARE_TABLE_SIZE = 5;
+	public static final int SQUARE_TABLE_SIZE = 15;
 	
 	//length of the side.
 	private int length;
@@ -28,11 +31,7 @@ public class SquareTable implements IShape {
 	public boolean isOutOfBounds(Position p) {
 		//If either the X or Y coordinate is greater than or equal to length
 		//return true.
-		if(p.getX() >= length || p.getY() >= length) {
-			return true;
-		}
-		//if either the X or Y coordinate is less than 0, return true.
-		else if(p.getX()< 0 || p.getY() < 0) {
+		if(p.getX() >= length || p.getY() >= length || p.getX()< 0 || p.getY() < 0) {
 			return true;
 		}
 		//return false otherwise. Meaning this Position p is within the shape.

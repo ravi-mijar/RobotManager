@@ -3,6 +3,8 @@
  */
 package com.rm.reagroup.playfield;
 
+import com.rm.reagroup.robot.Position;
+
 /**
  * This interface defines basic operations on the playfield.
  * Implementing classes need to define these methods. 

@@ -4,8 +4,6 @@
   <artifactId>RobotManager</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <build>
-    <sourceDirectory>src</sourceDirectory>
-    <testSourceDirectory>test/main/java</testSourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -14,6 +12,18 @@
           <source>1.8</source>
           <target>1.8</target>
         </configuration>
+      </plugin>
+      <plugin>
+      	<groupId>org.apache.maven.plugins</groupId>
+      	<artifactId>maven-surefire-plugin</artifactId>
+      	<version>2.19.1</version>
+      	<executions>
+      		<execution>
+      			<goals>
+      				<goal>test</goal>
+      			</goals>
+      		</execution>
+      	</executions>
       </plugin>
       <plugin>
       	<artifactId>maven-dependency-plugin</artifactId>
@@ -40,7 +50,6 @@
       		</descriptorRefs>
       		<archive>
       			<manifest>
-      				<mainClass>com.rm.reagroup.controller.RobotManager</mainClass>
       				<addClasspath>true</addClasspath>
       			</manifest>
       		</archive>
@@ -57,11 +66,6 @@
     </plugins>
   </build>
   <dependencies>
-	  	<dependency>
-	  		<groupId>com.googlecode.clichemaven</groupId>
-	  		<artifactId>cliche</artifactId>
-	  		<version>110413</version>
-	  	</dependency>
 	  	<dependency>
         	<groupId>junit</groupId>
         	<artifactId>junit</artifactId>

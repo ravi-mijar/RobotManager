@@ -1,6 +1,9 @@
 package com.rm.reagroup.robot;
 
-import com.rm.reagroup.playfield.Position;
+import java.util.logging.Logger;
+
+import com.rm.reagroup.playfield.IShape;
+import com.rm.reagroup.utils.Constants;
 
 /**
  * This class defines the robot itself.
@@ -48,11 +51,67 @@ public class ToyRobot {
 	}
 	
 	/**
-	 * Set the position of the robot to 'currentPosition'
-	 * @param currentPosition
+	 * Checks whether the position passed in will place the robot 
+	 * on the @IShape correctly or no. 
+	 * @param newPosition - new position to place robot.
+	 * @param playfield - @IShape on which to place robot.
+	 * @return If placement is possible, the function sets the position object of the robot to
+	 *  'newPosition' and returns true.
+	 * false otherwise.
 	 */
-	public void setCurrentPosition(Position currentPosition) {
-		this.currentPosition = currentPosition;
+	public boolean place(Position newPosition, IShape playfield) {
+		if(null != newPosition && null != playfield) {
+			if(playfield.isOutOfBounds(newPosition)) {
+				return false;
+			}
+			else {
+				this.currentPosition = newPosition;
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * This method will move the robot in the direction it is currently facing
+	 * @param playfield - Shape on which to move the robot.
+	 * @return - true - if the move was successful
+	 * false - if otherwise OR if shape was null;
+	 */
+	public boolean move(IShape playfield) {
+		if(null != playfield)
+			return this.currentPosition.move(playfield);
+		else {
+			Logger.getLogger("RobotManager").warning("Shape passed in was null. Cannot proceed.");
+			return false;
+		}
+	}
+	
+	/**
+	 * This method will rotate the robot.
+	 * @param dir - Direction to turn the robot to - LEFT / RIGHT
+	 * @return - true when rotation was successful
+	 * false if direction was wrong, or rotation was unsuccessful
+	 */
+	public boolean rotate(RotateDirection dir) {
+		if(dir.equals(RotateDirection.LEFT) || dir.equals(RotateDirection.RIGHT)) {
+			this.getCurrentPosition().rotate(dir);
+			return true;
+		}
+		else
+			Logger.getLogger("RobotManager").warning(Constants.INVALID_ROTATE_DIRECTION);
+		return false;
+	}
+	
+	/**
+	 * This method will nullify all the properties of the robot and destroy the object.
+	 * Thereby resetting it.
+	 * Use carefully!
+	 * 
+	 */
+	public static void resetRobot() {
+		getRobotInstance().currentPosition = null;
+		instance = null;
 	}
 	
 	@Override
